@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Pregunta from './components/Pregunta';
 import Formulario from './components/Formulario';
 import Listado from './components/Listado';
@@ -13,11 +13,25 @@ function App() {
   const [mostrarpregunta, setmostrarpregunta] = useState(true);
   // state guardar gasto
   const [gastos, setgastos] = useState([]);
+  // state gasto en useEffect
+  const [gasto, setgasto] = useState({});
+  // state condicional de mostrar gasto
+  const [creargasto, setcreargasto] = useState(false);
 
-  // cuando se agregue un nuevo gasto
-  const agregarNuevoGasto = (gasto) => {
-    setgastos([...gastos, gasto]);
-  };
+  //state que actualiza el restante
+  useEffect(() => {
+    if (creargasto) {
+      setgastos([...gastos, gasto]);
+
+      // reset a flase
+      setcreargasto(false);
+    }
+  }, [gasto]);
+
+  // // cuando se agregue un nuevo gasto -- se pasa al use effect y se crea un nuevo state para gasto
+  // const agregarNuevoGasto = (gasto) => {
+  //   setgastos([...gastos, gasto]);
+  // };
 
   return (
     <div className="container">
@@ -33,7 +47,11 @@ function App() {
           ) : (
             <div className="row">
               <div className="one-half column">
-                <Formulario agregarNuevoGasto={agregarNuevoGasto} />
+                <Formulario
+                  // agregarNuevoGasto={agregarNuevoGasto}
+                  setgasto={setgasto}
+                  setcreargasto={setcreargasto}
+                />
               </div>
               <div className="one-half column">
                 <Listado gastos={gastos} />
