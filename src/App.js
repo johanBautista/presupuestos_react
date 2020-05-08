@@ -29,7 +29,7 @@ function App() {
       // reset a false
       setcreargasto(false);
     }
-  }, [gasto]);
+  }, [gasto, creargasto, gastos, restante]);
 
   return (
     <div className="container">
