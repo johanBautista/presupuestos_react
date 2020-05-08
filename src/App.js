@@ -21,17 +21,15 @@ function App() {
   //state que actualiza el restante
   useEffect(() => {
     if (creargasto) {
+      // agrega e nuevo presupuesto
       setgastos([...gastos, gasto]);
-
-      // reset a flase
+      //resta el gasto al presupuesto
+      const presupuestoRestante = restante - gasto.cantidadgasto;
+      setrestante(presupuestoRestante);
+      // reset a false
       setcreargasto(false);
     }
   }, [gasto]);
-
-  // // cuando se agregue un nuevo gasto -- se pasa al use effect y se crea un nuevo state para gasto
-  // const agregarNuevoGasto = (gasto) => {
-  //   setgastos([...gastos, gasto]);
-  // };
 
   return (
     <div className="container">
@@ -47,11 +45,7 @@ function App() {
           ) : (
             <div className="row">
               <div className="one-half column">
-                <Formulario
-                  // agregarNuevoGasto={agregarNuevoGasto}
-                  setgasto={setgasto}
-                  setcreargasto={setcreargasto}
-                />
+                <Formulario setgasto={setgasto} setcreargasto={setcreargasto} />
               </div>
               <div className="one-half column">
                 <Listado gastos={gastos} />

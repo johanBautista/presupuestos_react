@@ -3,7 +3,6 @@ import Error from './Error';
 import shortid from 'shortid';
 
 const Formulario = ({ setgasto, setcreargasto }) => {
-  // const Formulario = ({ agregarNuevoGasto }) => {
   // state del nombre del gasto
   const [nombre, setnombre] = useState('');
   // state de la cantidad del gasto
@@ -28,7 +27,6 @@ const Formulario = ({ setgasto, setcreargasto }) => {
     };
 
     //pasar el gasto al comp padre
-    // agregarNuevoGasto(gasto);
     setgasto(gasto);
     setcreargasto(true);
     //recetear el form
