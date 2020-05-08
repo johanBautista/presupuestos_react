@@ -35,9 +35,7 @@ function App() {
                 <Formulario agregarNuevoGasto={agregarNuevoGasto} />
               </div>
               <div className="one-half column">
-                {gastos.map((gasto) => (
-                  <Listado key={gasto.id} gastos={gastos} />
-                ))}
+                <Listado gastos={gastos} />
               </div>
             </div>
           )}
