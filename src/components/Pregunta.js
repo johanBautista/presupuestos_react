@@ -9,7 +9,7 @@ const Pregunta = ({ setpresupuesto, setrestante, setmostrarpregunta }) => {
 
   // captura el presupuesto ingresado
   const definirPresupuesto = (e) => {
-    setcantidad(parseInt(e.target.value));
+    setcantidad(parseInt(e.target.value, 10));
   };
 
   // agregar presupuesto
