@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Pregunta from './components/Pregunta';
 import Formulario from './components/Formulario';
+import Listado from './components/Listado';
 
 function App() {
   // state del presupuesto
@@ -9,6 +10,14 @@ function App() {
   const [restante, setrestante] = useState(0);
   // state condicional
   const [mostrarpregunta, setmostrarpregunta] = useState(true);
+  // state guardar gasto
+  const [gastos, setgastos] = useState([]);
+
+  // cuando se agregue un nuevo gasto
+  const agregarNuevoGasto = (gasto) => {
+    setgastos([...gastos, gasto]);
+  };
+
   return (
     <div className="container">
       <header>
@@ -23,9 +32,13 @@ function App() {
           ) : (
             <div className="row">
               <div className="one-half column">
-                <Formulario />
+                <Formulario agregarNuevoGasto={agregarNuevoGasto} />
               </div>
-              <div className="one-half column">2</div>
+              <div className="one-half column">
+                {gastos.map((gasto) => (
+                  <Listado key={gasto.id} gastos={gastos} />
+                ))}
+              </div>
             </div>
           )}
         </div>
