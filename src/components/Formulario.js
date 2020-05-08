@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import Error from './Error';
+import PropTypes from 'prop-types';
 import shortid from 'shortid';
+
+import Error from './Error';
 
 const Formulario = ({ setgasto, setcreargasto }) => {
   // state del nombre del gasto
@@ -70,6 +72,11 @@ const Formulario = ({ setgasto, setcreargasto }) => {
       </form>
     </div>
   );
+};
+
+Formulario.protoTypes = {
+  setgasto: PropTypes.func.isRequired,
+  setcreargasto: PropTypes.func.isRequired,
 };
 
 export default Formulario;
